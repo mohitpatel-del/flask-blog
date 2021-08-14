@@ -1,0 +1,16 @@
+{
+    "params":
+    {
+        "local_server":"True",
+        "local_uri":"mysql://root:@localhost/lifelike",
+        "prod_uri":"mysql://root:@localhost/lifelike",
+        "gmail_user":"aboutlife42000.gmail.com",
+        "gmail_password":"blogpassword",
+        "recipient":"mp434027@gmail.com",
+        "about_text":"Mohit here, you can call me M. New blog, new name.",
+        "no_of_posts":4,
+        "admin_username":"mp434027",
+        "admin_password":"123456",
+        "upload_location":"H:\\flask\\uploadedfiles"
+    }
+}

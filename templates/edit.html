@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+    {% block content %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url( '{{ url_for('static', filename = 'assets/img/admin.jpg' )}} ')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            {% if post.sno != '0' %}
+                            <h1>Edit Post</h1>
+                            <span class="subheading">Edit Post</span>
+                            {% elif post.sno == '0' %}
+                                <h1>Add Post</h1>
+                                <span class="subheading">Add Post</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <a href="/dashboard"><button type="button" class="btn btn-info">Dashboard</button></a>
+                    <h3 class="mt-2 mb-2">Upload a file</h3>
+                    <div class="row gx-4 gx-lg-5 justify-content-center mt-2 mb-2">
+                        we will add file uploader here
+                    </div>
+                    <form action="/edit/{{post.sno}}"  method="POST">
+
+                        <h1 class="h3 mb-3 fw-normal">Admin Edit</h1>
+                    
+                        <div class="form-group mb-3">
+                            <label for="title">Title</label>
+                            <input value="{{post.title}}" name="title" type="text" class="form-control" id="title"  placeholder="Title">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="sub-title">Sub-Title</label>
+                            <input value="{{post.sub}}" name="sub_title" type="text" class="form-control" id="sub-title"  placeholder="Sub-Title">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="slug">Slug</label>
+                            <input value="{{post.slug}}" name="slug" type="text" class="form-control" id="slug"  placeholder="Slug">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="content">Content</label>
+                            <textarea value="" name="content" type="text" class="form-control" id="content"  placeholder="Content">{{post.content}}</textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="content">Img_src</label>
+                            <textarea value="" name="img_src" type="text" class="form-control" id="img_src"  placeholder="Img_src">{{post.img_file}}</textarea>
+                        </div>
+                    {% if post.sno == '0' %}
+                        <button class="w-100 btn btn-lg btn-primary" type="submit">Add Post</button>
+                    {% else %}
+                     <button class="w-100 btn btn-lg btn-primary" type="submit">Edit Post</button>
+                    {% endif %}
+                    
+                        <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+                      </form>
+                </div>
+            </div>
+
+        </div>
+    {% endblock %}

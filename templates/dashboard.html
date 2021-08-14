@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+    {% block content %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url( '{{ url_for('static', filename = 'assets/img/admin.jpg' )}} ')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Admin Panel</h1>
+                            <span class="subheading">Manage Posts, and update content</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <h1>Basic Actions</h1>
+
+                    <a href="/edit/0"><button type="button" class="btn btn-info">Add Post</button></a>
+                    <a href="/logout"><button type="button" class="btn btn-info">Logout</button></a>
+                    <hr class="my-4" />
+                    <h3 class="mt-2 mb-2">Upload a file</h3>
+                    <div class="row gx-4 gx-lg-5 justify-content-center mt-2 mb-2">
+                        <form action="/uploader" method="post" enctype="multipart/form-data">
+                            <input type="file" name="file1">
+                            <button type="submit" class="btn btn-outline-dark rounded">Submit</button>
+                        </form>
+                    </div>
+                    <hr class="my-4" />
+                    <h4 class="mt-2 mb-2">Manage Posts</h4>
+                    <hr class="my-4" />
+
+
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">SNO</th>
+                            <th scope="col thead-light">Title</th>
+                            <th scope="col">Tagline</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for post in posts %}
+                          <tr>
+                            <th scope="row">{{post.sno}}</th>
+                            <td>{{post.title}}</td>
+                            <td>{{post.sub}}</td>
+                            <td>{{post.date}}</td>
+                            <td><a href="/edit/{{post.sno}}"><button type="button" class="btn btn-info">Edit</button></a></td>
+                            <td><a href="/delete/{{post.sno}}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+
+        </div>
+    {% endblock %}
